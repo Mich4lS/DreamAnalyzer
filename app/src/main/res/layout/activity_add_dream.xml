@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Pole tekstowe do wprowadzania snu -->
+    <EditText
+        android:id="@+id/editDream"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="Wpisz tutaj swój sen..."
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/recordButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/rounded_edit_text"
+        android:padding="16dp"
+        android:minLines="5" />
+
+    <!-- Przycisk do nagrywania głosu -->
+    <Button
+        android:id="@+id/recordButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nagraj sen"
+        app:layout_constraintBottom_toTopOf="@id/saveDreamButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Przycisk do zapisu snu -->
+    <Button
+        android:id="@+id/saveDreamButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zapisz sen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/primary" />
+</androidx.constraintlayout.widget.ConstraintLayout>
