@@ -2,9 +2,9 @@ package user.example.dreamanalyzer
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,26 +12,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Inicjalizacja dolnego paska nawigacyjnego
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottomNavigation)
+        // Znajdź ImageView
+        val btnTellDream: ImageView = findViewById(R.id.btnTellDream)
 
-        // Listener dolnego paska nawigacyjnego
-        bottomNavigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.nav_home -> true
-                R.id.nav_calendar -> {
-                    // Przejście do aktywności kalendarza
-                    startActivity(Intent(this, CalendarActivity::class.java))
-                    true
-                }
-                else -> false
-            }
-        }
+        // Załaduj animację pulsowania
+        val pulseAnimation = AnimationUtils.loadAnimation(this, R.anim.pulse)
+        btnTellDream.startAnimation(pulseAnimation)
 
-        // Przycisk do otwierania aktywności "Opowiedz mi swój sen"
-        findViewById<Button>(R.id.btnTellDream).setOnClickListener {
+        // Obsługa kliknięcia przycisku
+        btnTellDream.setOnClickListener {
             startActivity(Intent(this, AddDreamActivity::class.java))
         }
     }
 }
+
+
 

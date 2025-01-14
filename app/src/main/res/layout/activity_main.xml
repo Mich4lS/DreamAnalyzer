@@ -1,34 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:orientation="vertical"
+    android:background="@color/primary"
+    android:gravity="center">
 
-    <!-- Przycisk na środku ekranu -->
-    <Button
-        android:id="@+id/btnTellDream"
+    <!-- Napis "Opowiedz mi swój sen" -->
+    <TextView
+        android:id="@+id/tvTellDream"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Opowiedz mi swój sen"
-        android:textSize="18sp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="@string/tell_dream"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
 
-    <!-- Dolny pasek nawigacyjny -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:menu="@menu/bottom_nav_menu"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <!-- Grafika chmurki -->
+    <ImageView
+        android:id="@+id/btnTellDream"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/img"
+        android:contentDescription="@string/tell_dream"
+        android:scaleType="fitCenter" />
+</LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+

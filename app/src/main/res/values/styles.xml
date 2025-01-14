@@ -2,8 +2,8 @@
     <!-- Motyw aplikacji -->
     <style name="Theme.DreamAnalyzer" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Kolory podstawowe -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryVariant</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
@@ -15,8 +15,8 @@
 
         <!-- Wygląd komponentów -->
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:statusBarColor">@color/purple_700</item>
-        <item name="android:navigationBarColor">@color/purple_500</item>
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:navigationBarColor">@color/primaryVariant</item>
     </style>
 
     <!-- Motyw dla SplashScreen -->
