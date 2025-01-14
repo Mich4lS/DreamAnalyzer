@@ -40,6 +40,8 @@
             android:exported="true"
             android:label="Kalendarz snów"
             android:theme="@style/Theme.DreamAnalyzer" />
+        <activity android:name=".StatsActivity" />
+        <activity android:name=".TipsActivity" />
 
     </application>
 
