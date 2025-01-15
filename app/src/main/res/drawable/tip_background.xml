@@ -8,5 +8,5 @@
     <!-- Obrys ramki -->
     <stroke
         android:width="2dp"
-        android:color="@color/primaryVariant" />
+        android:color="@color/primary" />
 </shape>

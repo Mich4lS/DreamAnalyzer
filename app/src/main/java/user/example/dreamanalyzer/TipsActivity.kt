@@ -3,6 +3,7 @@ package user.example.dreamanalyzer
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.FrameLayout
@@ -10,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class TipsActivity : AppCompatActivity() {
 
@@ -66,7 +68,7 @@ class TipsActivity : AppCompatActivity() {
                                 FrameLayout.LayoutParams.MATCH_PARENT
                             )
                         }
-                        frame.setBackgroundColor(ContextCompat.getColor(this, R.color.primaryVariant))
+                        frame.setBackgroundColor(ContextCompat.getColor(this, R.color.primary))
                         frame.addView(textView)
                     } else {
                         val imageView = ImageView(this).apply {
@@ -84,6 +86,33 @@ class TipsActivity : AppCompatActivity() {
                 }, 300) // Dostosuj opóźnienie do czasu animacji
             }
         }
+
+        // Dodanie obsługi dolnego paska nawigacyjnego
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottomNavigation)
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, AddDreamActivity::class.java))
+                    true
+                }
+                R.id.nav_calendar -> {
+                    startActivity(Intent(this, CalendarActivity::class.java))
+                    true
+                }
+                R.id.nav_stats -> {
+                    startActivity(Intent(this, StatsActivity::class.java))
+                    true
+                }
+                R.id.nav_tips -> {
+                    // Obecnie jesteśmy na stronie Tips
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Ustawienie aktywnej ikony w dolnym pasku
+        bottomNavigation.selectedItemId = R.id.nav_tips
     }
 }
 
