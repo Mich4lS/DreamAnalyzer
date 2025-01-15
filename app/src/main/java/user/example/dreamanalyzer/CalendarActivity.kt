@@ -1,5 +1,6 @@
 package user.example.dreamanalyzer
 
+import android.annotation.SuppressLint
 import android.app.Dialog // Import klasy Dialog
 import android.content.Intent
 import android.os.Bundle
@@ -60,6 +61,7 @@ class CalendarActivity : AppCompatActivity() {
             }
         }
     }
+
 
     private fun showDreamDetailsDialog(
         dream: Dream,

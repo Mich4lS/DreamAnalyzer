@@ -4,8 +4,6 @@
     <!-- Kolor tła -->
     <solid android:color="#FFFFFF" />
 
-    <!-- Zaokrąglone rogi -->
-    <corners android:radius="12dp" />
 
     <!-- Krawędź pola -->
     <stroke
