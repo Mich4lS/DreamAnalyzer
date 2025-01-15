@@ -5,26 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Tytuł kalendarza -->
-    <TextView
-        android:id="@+id/calendarTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kalendarz Snów"
-        android:textSize="24sp"
+    <!-- Lista snów -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dreamList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_margin="16dp" />
 
-    <!-- Placeholder: dodaj później widok kalendarza -->
-    <TextView
-        android:id="@+id/calendarPlaceholder"
-        android:layout_width="wrap_content"
+    <!-- Dolny pasek nawigacyjny -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Widok kalendarza w przygotowaniu..."
-        app:layout_constraintTop_toBottomOf="@id/calendarTitle"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
+        android:background="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

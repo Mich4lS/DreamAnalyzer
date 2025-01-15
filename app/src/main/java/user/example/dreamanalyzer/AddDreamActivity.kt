@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -12,7 +13,7 @@ class AddDreamActivity : AppCompatActivity() {
 
     private lateinit var editDream: EditText
     private lateinit var saveDreamButton: Button
-    private lateinit var recordButton: Button
+    private lateinit var recordButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,3 +64,4 @@ class AddDreamActivity : AppCompatActivity() {
         }
     }
 }
+

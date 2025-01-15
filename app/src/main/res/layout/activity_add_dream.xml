@@ -11,34 +11,36 @@
         android:id="@+id/editDream"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:hint="Wpisz tutaj swój sen..."
+        android:hint="Opisz tutaj swój sen"
         android:gravity="top"
         android:inputType="textMultiLine"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recordButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/rounded_edit_text"
-        android:padding="16dp"
-        android:minLines="5" />
-
-    <!-- Przycisk do nagrywania głosu -->
-    <Button
-        android:id="@+id/recordButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nagraj sen"
         app:layout_constraintBottom_toTopOf="@id/saveDreamButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp" />
+        android:background="@drawable/rounded_edit_text"
+        android:padding="25dp"
+        android:minLines="5" />
+
+    <!-- Ikona mikrofonu -->
+    <ImageButton
+        android:id="@+id/recordButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/microphone"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Nagraj sen"
+        app:layout_constraintEnd_toEndOf="@id/editDream"
+        app:layout_constraintBottom_toBottomOf="@id/editDream"
+        android:layout_margin="8dp"
+        app:tint="@color/primary" />
 
     <!-- Przycisk do zapisu snu -->
     <Button
         android:id="@+id/saveDreamButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Zapisz sen"
+        android:text="Analizuj sen"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,4 +58,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 

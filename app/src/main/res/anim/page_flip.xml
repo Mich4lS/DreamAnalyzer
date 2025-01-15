@@ -1,0 +1,18 @@
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="sequentially">
+
+    <!-- Obrót w osi Y -->
+    <objectAnimator
+        android:propertyName="rotationY"
+        android:valueFrom="0"
+        android:valueTo="90"
+        android:duration="300" />
+
+    <!-- Obrót w osi Y po drugiej stronie -->
+    <objectAnimator
+        android:propertyName="rotationY"
+        android:valueFrom="-90"
+        android:valueTo="0"
+        android:duration="300" />
+
+</set>

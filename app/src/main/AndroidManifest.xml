@@ -40,10 +40,23 @@
             android:exported="true"
             android:label="Kalendarz snów"
             android:theme="@style/Theme.DreamAnalyzer" />
-        <activity android:name=".StatsActivity" />
-        <activity android:name=".TipsActivity" />
+
+        <!-- Aktywność: Statystyki -->
+        <activity
+            android:name=".StatsActivity"
+            android:exported="true"
+            android:label="Statystyki"
+            android:theme="@style/Theme.DreamAnalyzer" />
+
+        <!-- Aktywność: Ciekawostki -->
+        <activity
+            android:name=".TipsActivity"
+            android:exported="true"
+            android:label="Ciekawostki"
+            android:theme="@style/Theme.DreamAnalyzer" />
 
     </application>
 
 </manifest>
+
 
