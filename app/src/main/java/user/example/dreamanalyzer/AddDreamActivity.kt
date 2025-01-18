@@ -19,6 +19,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
+import android.text.method.ScrollingMovementMethod
 
 class AddDreamActivity : AppCompatActivity() {
     private val client = OkHttpClient()
@@ -41,6 +42,7 @@ class AddDreamActivity : AppCompatActivity() {
             }
         }
 
+        txtResponse.movementMethod = ScrollingMovementMethod()
 
         // Listener do nagrywania głosu
         recordButton.setOnClickListener {
