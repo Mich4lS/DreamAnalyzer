@@ -15,7 +15,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class CalendarActivity : AppCompatActivity() {
 
     private lateinit var dreamList: RecyclerView
-    private lateinit var adapter: DreamAdapter  // Adapter jest teraz właściwością klasy
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,19 +26,11 @@ class CalendarActivity : AppCompatActivity() {
         // Ustaw zaznaczenie dla ikonki Kalendarza
         bottomNavigation.selectedItemId = R.id.nav_calendar
 
-        // Dane do RecyclerView
-        val dreams = mutableListOf(
-            Dream("12.01", "Śniło mi się, że lecę samolotem nad górami..."),
-            Dream("13.01", "Byłem na pięknej wyspie z palmami..."),
-            Dream("14.01", "Widziałem niezwykłe kolory na niebie...")
-        )
 
-        // Inicjalizacja adaptera
-        adapter = DreamAdapter(dreams) { dream, position ->
-            showDreamDetailsDialog(dream, dreams, position)
-        }
+
+
         dreamList.layoutManager = LinearLayoutManager(this)
-        dreamList.adapter = adapter
+
 
         // Obsługa dolnego paska nawigacyjnego
         bottomNavigation.setOnItemSelectedListener { item ->
@@ -63,33 +54,5 @@ class CalendarActivity : AppCompatActivity() {
     }
 
 
-    private fun showDreamDetailsDialog(
-        dream: Dream,
-        dreams: MutableList<Dream>,
-        position: Int
-    ) {
-        // Tworzenie dialogu
-        val dialog = Dialog(this)
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_dream_details, null)
-        dialog.setContentView(view)
-
-        val dreamDetails = view.findViewById<TextView>(R.id.dreamDetails)
-        val deleteButton = view.findViewById<Button>(R.id.deleteDreamButton)
-        dreamDetails.text = dream.details
-
-        // Usunięcie snu
-        deleteButton.setOnClickListener {
-            dreams.removeAt(position)
-            adapter.notifyItemRemoved(position)
-            dialog.dismiss()
-        }
-
-        // Ustawienie rozmiaru i wyświetlenie dialogu
-        dialog.window?.setLayout(
-            (resources.displayMetrics.widthPixels * 0.9).toInt(),
-            (resources.displayMetrics.heightPixels * 0.6).toInt()
-        )
-        dialog.show()
-    }
 }
 

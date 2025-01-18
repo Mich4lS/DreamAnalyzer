@@ -78,7 +78,8 @@ class AddDreamActivity : AppCompatActivity() {
     }
 
     fun getResponse(question: String, callback: (String) -> Unit) {
-        val apiKey = "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"
+        val apiKey = BuildConfig.OPENAI_API_KEY
+
         val url = "https://api.openai.com/v1/chat/completions"
 
         val requestBody = """

@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -20,6 +22,10 @@ android {
         }
     }
 
+    buildFeatures {
+        buildConfig = true // Włącz generowanie BuildConfig
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -28,6 +34,23 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+
+    val localProperties = rootProject.file("local.properties")
+    if (localProperties.exists()) {
+        val properties = Properties().apply {
+            load(localProperties.inputStream())
+        }
+
+        buildTypes.forEach {
+            it.buildConfigField(
+                "String",
+                "OPENAI_API_KEY",
+                "\"${properties.getProperty("OPENAI_API_KEY")}\""
+            )
+        }
+    } else {
+        throw GradleException("local.properties file not found. Please create it and add your API key.")
     }
 
     compileOptions {
@@ -44,7 +67,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.2" // Zaktualizowana wersja
+        kotlinCompilerExtensionVersion = "1.5.2"
     }
 
     packaging {
@@ -55,33 +78,20 @@ android {
 }
 
 dependencies {
-    // Core libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
-
-    // Jetpack Compose BOM
-    implementation(platform("androidx.compose:compose-bom:2023.10.00")) // Aktualna wersja BOM
-
-    // Jetpack Compose modules
+    implementation(platform("androidx.compose:compose-bom:2023.10.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-
-    // Material Design
     implementation("com.google.android.material:material:1.9.0")
-
-    // ConstraintLayout
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-
-    // Testing dependencies
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.5.2")
-
-    // Debugging dependencies
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
