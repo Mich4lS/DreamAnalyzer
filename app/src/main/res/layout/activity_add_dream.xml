@@ -2,27 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
     <!-- Pole tekstowe do wprowadzania snu -->
-    <EditText
-        android:id="@+id/editDream"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:hint="Opisz tutaj swój sen"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/saveDreamButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/rounded_edit_text"
-        android:padding="25dp"
-        android:minLines="5" />
 
     <!-- Ikona mikrofonu -->
+
+    <EditText
+        android:id="@+id/etQuestion"
+        android:layout_width="378dp"
+        android:layout_height="313dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_edit_text"
+        android:gravity="top"
+        android:hint="Opisz tutaj swój sen"
+        android:inputType="textMultiLine"
+        android:minLines="5"
+        android:padding="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
         android:id="@+id/recordButton"
         android:layout_width="48dp"
@@ -30,23 +34,33 @@
         android:src="@drawable/microphone"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Nagraj sen"
-        app:layout_constraintEnd_toEndOf="@id/editDream"
-        app:layout_constraintBottom_toBottomOf="@id/editDream"
+        app:layout_constraintEnd_toEndOf="@id/etQuestion"
+        app:layout_constraintBottom_toBottomOf="@id/etQuestion"
         android:layout_margin="8dp"
         app:tint="@color/primary" />
 
-    <!-- Przycisk do zapisu snu -->
+
     <Button
-        android:id="@+id/saveDreamButton"
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="268dp"
+        android:backgroundTint="@color/primary"
         android:text="Analizuj sen"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/primary" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- Dolny pasek nawigacyjny -->
+    <TextView
+        android:id="@+id/txtResponse"
+        android:layout_width="381dp"
+        android:layout_height="260dp"
+        android:hint="Twoja analiza snu pojawi się tutaj:"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmit"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-1dp" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
