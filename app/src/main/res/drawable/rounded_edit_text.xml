@@ -5,10 +5,6 @@
     <solid android:color="#03A9F4" />
 
     <!-- Zaokrąglenie rogów -->
-    <corners android:radius="20dp" />
+    <corners android:radius="10dp" />
 
-    <!-- Krawędź pola -->
-    <stroke
-        android:width="5dp"
-        android:color="#2196F3" />
 </shape>

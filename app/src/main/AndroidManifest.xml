@@ -40,7 +40,7 @@
         <activity
             android:name=".CalendarActivity"
             android:exported="true"
-            android:label="Kalendarz snów"
+            android:label="Lista twoich snów"
             android:theme="@style/Theme.DreamAnalyzer" />
 
         <!-- Aktywność: Statystyki -->
@@ -56,6 +56,9 @@
             android:exported="true"
             android:label="Ciekawostki"
             android:theme="@style/Theme.DreamAnalyzer" />
+
+        <activity android:name=".DreamDetailActivity" />
+
 
     </application>
 

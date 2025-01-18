@@ -27,7 +27,7 @@ class StatsActivity : AppCompatActivity() {
                     startActivity(Intent(this, CalendarActivity::class.java))
                     true
                 }
-                R.id.nav_stats -> true // Nic nie robi, jesteśmy na tej stronie
+                R.id.nav_stats -> true
                 R.id.nav_tips -> {
                     startActivity(Intent(this, TipsActivity::class.java))
                     true

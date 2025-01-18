@@ -19,10 +19,17 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
 import org.json.JSONObject
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Locale
 import android.text.method.ScrollingMovementMethod
 
 class AddDreamActivity : AppCompatActivity() {
     private val client = OkHttpClient()
+
+    companion object {
+        val dreamsList = mutableListOf<Dream>() // Lista przechowująca sny
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_dream)
@@ -33,11 +40,28 @@ class AddDreamActivity : AppCompatActivity() {
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottomNavigation)
 
         btnSubmit.setOnClickListener {
-            val question = etQuestion.text.toString()
-            Toast.makeText(this, question, Toast.LENGTH_SHORT).show()
+            val userInput = etQuestion.text.toString()
+            val question = "Zinterpretuj ten sen oraz powiedz co może oznaczać: $userInput"
+
             getResponse(question) { response ->
                 runOnUiThread {
                     txtResponse.text = response
+
+                    // Zapisz nowy sen w liście
+                    val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(System.currentTimeMillis())
+                    val dream = Dream(currentDate, userInput, response)
+                    dreamsList.add(dream)
+
+                    // Wczytaj istniejącą listę snów
+                    val dreams = loadDreamsFromPreferences(this)
+
+                    // Dodaj nowy sen do listy
+                    dreams.add(dream)
+
+                    // Zapisz zaktualizowaną listę
+                    saveDreamsToPreferences(this, dreams)
+
+                    Toast.makeText(this, "Sen zapisany!", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -56,22 +80,18 @@ class AddDreamActivity : AppCompatActivity() {
                     startActivity(Intent(this, AddDreamActivity::class.java))
                     true
                 }
-
                 R.id.nav_calendar -> {
                     startActivity(Intent(this, CalendarActivity::class.java))
                     true
                 }
-
                 R.id.nav_stats -> {
                     startActivity(Intent(this, StatsActivity::class.java))
                     true
                 }
-
                 R.id.nav_tips -> {
                     startActivity(Intent(this, TipsActivity::class.java))
                     true
                 }
-
                 else -> false
             }
         }
@@ -126,7 +146,6 @@ class AddDreamActivity : AppCompatActivity() {
             }
         })
     }
-
 }
 
 
