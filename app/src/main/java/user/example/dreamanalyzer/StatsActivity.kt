@@ -13,7 +13,6 @@ class StatsActivity : AppCompatActivity() {
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottomNavigation)
 
-        // Ustaw zaznaczenie dla ikonki Statystyk
         bottomNavigation.selectedItemId = R.id.nav_stats
 
         // Obsługa dolnego paska nawigacyjnego

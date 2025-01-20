@@ -18,20 +18,16 @@ class CalendarActivity : AppCompatActivity() {
         dreamList = findViewById(R.id.dreamList)
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottomNavigation)
 
-        // Wczytaj sny z SharedPreferences
         val dreams = loadDreamsFromPreferences(this)
 
-        // Ustaw adapter dla RecyclerView
         dreamList.layoutManager = LinearLayoutManager(this)
         dreamList.adapter = DreamAdapter(dreams) { dream ->
-            // Obsługa kliknięcia elementu
             val intent = Intent(this, DreamDetailActivity::class.java)
             intent.putExtra("EXTRA_DATE", dream.date)
             intent.putExtra("EXTRA_DREAM", dream.dreamText)
             intent.putExtra("EXTRA_INTERPRETATION", dream.interpretation)
             startActivity(intent)
         }
-        // Ustaw wybrany element nawigacji
         bottomNavigation.selectedItemId = R.id.nav_calendar
 
         // Obsługa dolnego paska nawigacyjnego

@@ -12,14 +12,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Znajdź ImageView
         val btnTellDream: ImageView = findViewById(R.id.btnTellDream)
 
-        // Załaduj animację pulsowania
         val pulseAnimation = AnimationUtils.loadAnimation(this, R.anim.pulse)
         btnTellDream.startAnimation(pulseAnimation)
 
-        // Obsługa kliknięcia przycisku
         btnTellDream.setOnClickListener {
             startActivity(Intent(this, AddDreamActivity::class.java))
         }

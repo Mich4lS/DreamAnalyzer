@@ -18,11 +18,14 @@ fun loadDreamsFromPreferences(context: Context): MutableList<Dream> {
     val sharedPreferences = context.getSharedPreferences("DreamPrefs", Context.MODE_PRIVATE)
     val json = sharedPreferences.getString("dreamList", null)
 
-    return if (json != null) {
+    val dreams: MutableList<Dream> = if (json != null) {
         val gson = Gson()
         val type = object : TypeToken<MutableList<Dream>>() {}.type
         gson.fromJson(json, type)
     } else {
         mutableListOf()
     }
+
+    dreams.sortByDescending { it.date }
+    return dreams
 }

@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "user.example.dreamanalyzer"
-        minSdk = 21
+        minSdk = 23
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -79,6 +79,8 @@ android {
 
 dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation("androidx.cardview:cardview:1.0.0")
+
 
     // Core dependencies
     implementation(libs.androidx.core.ktx)

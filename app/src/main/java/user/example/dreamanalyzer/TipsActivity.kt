@@ -83,7 +83,7 @@ class TipsActivity : AppCompatActivity() {
                         frame.addView(imageView)
                     }
                     isFlipped = !isFlipped
-                }, 300) // Dostosuj opóźnienie do czasu animacji
+                }, 300)
             }
         }
 
@@ -104,14 +104,12 @@ class TipsActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_tips -> {
-                    // Obecnie jesteśmy na stronie Tips
                     true
                 }
                 else -> false
             }
         }
 
-        // Ustawienie aktywnej ikony w dolnym pasku
         bottomNavigation.selectedItemId = R.id.nav_tips
     }
 }

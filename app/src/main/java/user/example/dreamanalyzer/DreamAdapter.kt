@@ -3,17 +3,23 @@ package user.example.dreamanalyzer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class DreamAdapter(private val dreams: List<Dream>, private val onClick: (Dream) -> Unit) :
-    RecyclerView.Adapter<DreamAdapter.DreamViewHolder>() {
+class DreamAdapter(
+    private var dreams: MutableList<Dream>,
+    private val onItemClicked: (Dream) -> Unit
+) : RecyclerView.Adapter<DreamAdapter.DreamViewHolder>() {
 
     class DreamViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val dateTextView: TextView = view.findViewById(R.id.dreamDate)
-        val dreamTextView: TextView = view.findViewById(R.id.dreamText)
-        val interpretationTextView: TextView = view.findViewById(R.id.dreamInterpretation)
+        val date: TextView = view.findViewById(R.id.dreamDate)
+        val text: TextView = view.findViewById(R.id.dreamText)
+        val interpretation: TextView = view.findViewById(R.id.dreamInterpretation)
+        val deleteButton: ImageButton = view.findViewById(R.id.deleteButton)
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DreamViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -23,12 +29,20 @@ class DreamAdapter(private val dreams: List<Dream>, private val onClick: (Dream)
 
     override fun onBindViewHolder(holder: DreamViewHolder, position: Int) {
         val dream = dreams[position]
-        holder.dateTextView.text = dream.date
-        holder.dreamTextView.text = dream.dreamText
-        holder.interpretationTextView.text = dream.interpretation
+        holder.date.text = dream.date
+        holder.text.text = dream.dreamText
+        holder.interpretation.text = dream.interpretation
 
         holder.itemView.setOnClickListener {
-            onClick(dream)
+            onItemClicked(dream)
+        }
+
+        holder.deleteButton.setOnClickListener {
+            dreams.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, itemCount)
+
+            saveDreamsToPreferences(holder.itemView.context, dreams)
         }
     }
 
